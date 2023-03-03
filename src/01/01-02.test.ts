@@ -1,4 +1,4 @@
-import {CityType} from "./01_02";
+import {addMoneyToBugjet, CityType, destroyHouses, repairHouse, takeMoneyFromBudget, toHireStaff} from "./01_02";
 
 let city: CityType;
 
@@ -7,17 +7,8 @@ beforeEach(() => {
         title: 'New York',
         houses: [
             {
+                id: 1,
                 buildedAt: 2012,
-                repaired: false,
-                address: {
-                    number: 100,
-                    street: {
-                        title: 'White street',
-                    }
-                }
-            },
-            {
-                buildedAt: 2008,
                 repaired: false,
                 address: {
                     number: 100,
@@ -27,6 +18,18 @@ beforeEach(() => {
                 }
             },
             {
+                id: 2,
+                buildedAt: 2008,
+                repaired: false,
+                address: {
+                    number: 100,
+                    street: {
+                        title: 'White street',
+                    }
+                }
+            },
+            {
+                id: 3,
                 buildedAt: 2020,
                 repaired: false,
                 address: {
@@ -96,7 +99,37 @@ test('government', () => {
     expect(city.governmentBuildings[1].budget).toBe(50000);
     expect(city.governmentBuildings[1].staffCount).toBe(1000);
     expect(city.governmentBuildings[1].address.street.title).toBe('South str');
+})
 
+test('increase budget', () => {
+    addMoneyToBugjet(city.governmentBuildings[0], 10000);
 
+    expect(city.governmentBuildings[0].budget).toBe(30000)
+})
+
+test('decrease budget', () => {
+    takeMoneyFromBudget(city.governmentBuildings[1], 10000)
+
+    expect(city.governmentBuildings[1].budget).toBe(40000)
+})
+
+test('Houses should be destroyed', () => {
+    destroyHouses(city, "Happy street")
+
+    expect(city.houses.length).toBe(1);
+    expect(city.houses[0].id).toBe(2)
+})
+
+test('house should be repaired', () => {
+    repairHouse(city.houses[1])
+    expect(city.houses[1].repaired).toBeTruthy()
 
 })
+
+test('staff should be increased', () => {
+    toHireStaff(city.governmentBuildings[0], 20)
+
+    expect(city.governmentBuildings[0].staffCount).toBe(220)
+})
+
+

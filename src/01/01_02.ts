@@ -1,3 +1,4 @@
+import exp from "constants";
 
 type StudentType = {
     age: number
@@ -29,8 +30,9 @@ export type CityType = {
 }
 
 type HouseType = {
+    id: number
     buildedAt: number
-    repaired: false
+    repaired: boolean
     address: AddressType
 }
 
@@ -78,4 +80,30 @@ const student: StudentType = {
             title: 'Html',
         }
     ]
+}
+
+export const addMoneyToBugjet = (building: GovernmentBuilding, num: number) => {
+    building.budget = building.budget + num
+}
+
+export const takeMoneyFromBudget = (governmentBuilding: GovernmentBuilding, number: number) => {
+    governmentBuilding.budget = governmentBuilding.budget - number
+}
+
+export const destroyHouses = (city: CityType, street: string) => {
+
+    for (let i = 0; i < city.houses.length; i++) {
+        if(city.houses[i].address.street.title === street) {
+            city.houses.splice(i, 1);
+            i--
+        }
+    }
+
+}
+
+export const repairHouse = (house: HouseType) => {
+    if(!house.repaired) house.repaired = true
+}
+export const toHireStaff = (building: GovernmentBuilding, num: number) => {
+    building.staffCount += num
 }
