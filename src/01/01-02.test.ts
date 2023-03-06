@@ -1,4 +1,13 @@
-import {addMoneyToBugjet, CityType, destroyHouses, repairHouse, takeMoneyFromBudget, toHireStaff} from "./01_02";
+import {
+    addMoneyToBugjet,
+    CityType,
+    destroyHouses,
+    destroyStreets, getBuildings, getHousesOnTheStreet, GovernmentBuilding, HouseType,
+    repairHouse,
+    takeMoneyFromBudget,
+    toHireStaff
+} from "./01_02";
+import exp from "constants";
 
 let city: CityType;
 
@@ -130,6 +139,27 @@ test('staff should be increased', () => {
     toHireStaff(city.governmentBuildings[0], 20)
 
     expect(city.governmentBuildings[0].staffCount).toBe(220)
+})
+
+test('street should be destroyed', () => {
+    destroyStreets(city, 'Happy street')
+
+    expect(city.houses.length).toBe(1)
+    expect(city.houses[0].id).toBe(2)
+})
+
+test('list of streets titles of houses', () => {
+    let happyHouses: HouseType[] = getHousesOnTheStreet(city.houses, "Happy street")
+    let whiteHouses = getHousesOnTheStreet(city.houses, "White street")
+
+    expect(happyHouses.length).toBe(2)
+    expect(whiteHouses.length).toBe(1)
+})
+
+test('biulding with correct staff count', () => {
+    let buildings: GovernmentBuilding[] = getBuildings(city.governmentBuildings, 1000)
+    expect(buildings.length).toBe(1)
+    expect(buildings[0].type).toBe('Fire-station')
 })
 
 

@@ -29,7 +29,7 @@ export type CityType = {
     citizensNumber: number
 }
 
-type HouseType = {
+export type HouseType = {
     id: number
     buildedAt: number
     repaired: boolean
@@ -45,7 +45,7 @@ type streetType = {
     title: string
 }
 
-type GovernmentBuilding = {
+export type GovernmentBuilding = {
     type: string
     budget: number
     staffCount: number
@@ -93,7 +93,7 @@ export const takeMoneyFromBudget = (governmentBuilding: GovernmentBuilding, numb
 export const destroyHouses = (city: CityType, street: string) => {
 
     for (let i = 0; i < city.houses.length; i++) {
-        if(city.houses[i].address.street.title === street) {
+        if (city.houses[i].address.street.title === street) {
             city.houses.splice(i, 1);
             i--
         }
@@ -102,8 +102,21 @@ export const destroyHouses = (city: CityType, street: string) => {
 }
 
 export const repairHouse = (house: HouseType) => {
-    if(!house.repaired) house.repaired = true
+    if (!house.repaired) house.repaired = true
 }
+
 export const toHireStaff = (building: GovernmentBuilding, num: number) => {
     building.staffCount += num
+}
+
+export const destroyStreets = (city: CityType, street: string) => {
+    city.houses = city.houses.filter(st => st.address.street.title !== street)
+}
+
+export const getHousesOnTheStreet = (houses: HouseType[], street: string): HouseType[] => {
+    return houses.filter(h => h.address.street.title === street)
+}
+
+export const getBuildings = (governmentBuildings: GovernmentBuilding[], numberStaff: number): GovernmentBuilding[] => {
+    return governmentBuildings.filter(b => b.staffCount === numberStaff)
 }
