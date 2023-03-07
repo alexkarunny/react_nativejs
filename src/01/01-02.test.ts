@@ -1,8 +1,8 @@
 import {
     addMoneyToBugjet,
-    CityType,
+    CityType, createHelloMessages,
     destroyHouses,
-    destroyStreets, getBuildings, getHousesOnTheStreet, GovernmentBuilding, HouseType,
+    destroyStreets, getBuildings, getHousesOnTheStreet, getStreetTitleofHouses, GovernmentBuilding, HouseType,
     repairHouse,
     takeMoneyFromBudget,
     toHireStaff
@@ -162,4 +162,20 @@ test('biulding with correct staff count', () => {
     expect(buildings[0].type).toBe('Fire-station')
 })
 
+test('list of streets of government buildings', () => {
+    const streetsName = getStreetTitleofHouses(city.governmentBuildings)
+
+    expect(streetsName.length).toBe(2)
+    expect(streetsName[0]).toBe('Central str')
+    expect(streetsName[1]).toBe('South str')
+})
+
+test('create hello messages', () => {
+    const messages:string[] = createHelloMessages(city.houses)
+
+    expect(messages.length).toBe(city.houses.length)
+    expect(messages[1]).toBe('Hello from White street,100')
+    expect(messages[2]).toBe('Hello from Happy street,101')
+
+})
 

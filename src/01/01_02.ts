@@ -120,3 +120,11 @@ export const getHousesOnTheStreet = (houses: HouseType[], street: string): House
 export const getBuildings = (governmentBuildings: GovernmentBuilding[], numberStaff: number): GovernmentBuilding[] => {
     return governmentBuildings.filter(b => b.staffCount === numberStaff)
 }
+
+export const getStreetTitleofHouses = (governmentBuildings: GovernmentBuilding[]) => {
+  return governmentBuildings.map(b => b.address.street.title)
+}
+
+export const createHelloMessages = (houses: HouseType[]) => {
+  return houses.map(h => `Hello from ${h.address.street.title},${h.address.number}`)
+}
