@@ -5,9 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {value01_01} from './01/01-01'
 import {value_01_viktor} from './01/01_viktor'
+import {value05_05} from './01/05-sorting'
 
 const a = value01_01;
 const b = value_01_viktor
+const c = value05_05
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
