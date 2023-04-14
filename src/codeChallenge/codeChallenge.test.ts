@@ -1,10 +1,10 @@
 
 import {
-    checkStart,
+    checkStart, feast,
     getMinLengthWord,
     isIncludes,
     isIncludesOnce,
-    repeatString,
+    repeatString, rotate,
     setUpperCase,
     truncateString
 } from './codeChallenge';
@@ -48,4 +48,15 @@ test('7. String includes substring once', () => {
     expect(isIncludesOnce('Incubator', 'inba')).toBeTruthy()
     expect(isIncludesOnce('Incubator', 'Incubatorrr')).toBeFalsy()
     expect(isIncludesOnce('Inrcurbator', 'Incubatorrr')).toBeTruthy()
+})
+
+test('8. first and last letters in two string should be equal', () => {
+    expect(feast("great blue heron", "garlic naan")).toBeTruthy()
+    expect(feast("chickadee", "chocolate cake")).toBeTruthy()
+    expect(feast("brown bear", "bear claw")).toBeFalsy()
+})
+
+test('9. All star code challenge#15', () => {
+    expect(rotate('Hello')).toStrictEqual(["elloH", "lloHe", "loHel", "oHell", "Hello"])
+    expect(rotate('')).toStrictEqual([])
 })

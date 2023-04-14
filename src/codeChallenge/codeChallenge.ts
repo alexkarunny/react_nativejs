@@ -85,3 +85,17 @@ export const isIncludesOnce = (str: string, subStr: string): boolean => {
     }
     return temp === subStrArr.length
 }
+
+export const feast = (strOne: string, strTwo: string): boolean => {
+    return strOne[0] === strTwo[0] && strOne[strOne.length - 1] === strTwo[strTwo.length - 1]
+}
+
+export const rotate = (word: string):string[] => {
+    let arr = []
+    let temp = word
+    for (let i = 0; i < word.length; i++) {
+        temp = temp.slice(1) + temp[0]
+        arr.push(temp)
+    }
+    return arr
+}
