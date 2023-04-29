@@ -216,3 +216,28 @@ export function getBanknoteList(amountOfMoney: number): Array<number> {
 
     return arr
 }
+
+export const secondSymbol = (s: string, symbol: string): number => {
+    let firstIncl = s.indexOf(symbol)
+    if(firstIncl === -1) return -1
+    else return s.indexOf(symbol, firstIncl + 1)
+}
+
+export const maxSumBetweenTwoNegatives = (a: number[]): number => {
+    let finallySum = -1
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] < 0) {
+            let newsum = 0
+            for (let j = i + 1; j < a.length; j++) {
+                if (a[j] > 0) {
+                    newsum += a[j]
+                } else if(a[j] < 0) {
+                    if(newsum > finallySum) finallySum = newsum
+                    break
+                }
+            }
+        }
+    }
+
+    return finallySum
+}
