@@ -1,3 +1,4 @@
+export const CODE_CHALLENGE = 'CODE-CHALLENGE'
 //1. Реализуйте функцию, которая принимает параметром подсторку, число повторов и разделитель, а возвращает сторку, состоящую из указанного количества повторов подстроки с использованием разделителя.
 // repeatString("yo", 3, " ") => "yo yo yo"
 // repeatString("yo", 3, ",") => "yo,yo,yo"
@@ -60,12 +61,12 @@ export const setUpperCase = (str: string): string => {
 // повторяющихся символов.
 //* попробовать учитывать повтор символов в подстроке
 
-export const isIncludes = (str: string, subStr: string):boolean => {
+export const isIncludes = (str: string, subStr: string): boolean => {
     let strArr = str.toLowerCase().split('')
     let subStrArr = subStr.toLowerCase().split('')
     let temp = 0
     for (let i = 0; i < subStrArr.length; i++) {
-        if(strArr.includes(subStrArr[i])) ++temp
+        if (strArr.includes(subStrArr[i])) ++temp
         else break
     }
     return temp === subStrArr.length
@@ -78,10 +79,10 @@ export const isIncludesOnce = (str: string, subStr: string): boolean => {
 
     for (let i = 0; i < subStrArr.length; i++) {
         let index = strArr.indexOf(subStrArr[i])
-        if( index >= 0 ) {
+        if (index >= 0) {
             ++temp
             strArr.splice(index, 1)
-        }else break
+        } else break
     }
     return temp === subStrArr.length
 }
@@ -90,7 +91,7 @@ export const feast = (strOne: string, strTwo: string): boolean => {
     return strOne[0] === strTwo[0] && strOne[strOne.length - 1] === strTwo[strTwo.length - 1]
 }
 
-export const rotate = (word: string):string[] => {
+export const rotate = (word: string): string[] => {
     let arr = []
     let temp = word
     for (let i = 0; i < word.length; i++) {
@@ -119,24 +120,24 @@ export function sum(...nums: Array<number>): number {
 //  - "11", если треугольник обычный,
 //  - "00", если такого треугольника не существует.
 
-export function getTriangleType(a: number,b: number,c: number): string {
+export function getTriangleType(a: number, b: number, c: number): string {
     //...здесь пишем код.
     // В return стоит "заглушка", чтоб typescript не ругался
-    if(a + b < c ||  a + c < b || b + c < a) return '00'
-    if(a === b && a === c) return '10'
-    else if(a === b || a === c || c === b ) return '01'
-    return "11"
+    if (a + b < c || a + c < b || b + c < a) return '00'
+    if (a === b && a === c) return '10'
+    else if (a === b || a === c || c === b) return '01'
+    return '11'
 }
 
 // 3. Функция getSum принимает параметром целое число и возвращает
 // сумму цифр этого числа
 
-export function getSum(number: number): number{
+export function getSum(number: number): number {
     //...здесь пишем код.
     // В return стоит "заглушка", чтоб typescript не ругался
     return String(number)
         .split('')
-        .reduce((acc, item) => Number(acc) + Number(item),0)
+        .reduce((acc, item) => Number(acc) + Number(item), 0)
 }
 
 // 4. Функция isEvenIndexSumGreater принимает  параметром массив чисел.
@@ -150,11 +151,11 @@ export const isEvenIndexSumGreater = (arr: Array<number>): boolean => {
     let sumEven = 0
     let sumOdd = 0
 
-    for (let i = 0; i < arr.length; i+=2) {
+    for (let i = 0; i < arr.length; i += 2) {
         sumEven += arr[i]
     }
 
-    for (let i = 1; i < arr.length; i+=2) {
+    for (let i = 1; i < arr.length; i += 2) {
         sumOdd += arr[i]
     }
 
@@ -170,7 +171,7 @@ export function getSquarePositiveIntegers(array: Array<number>): Array<number> {
     // В return стоит "заглушка", чтоб typescript не ругался
     let arr = []
     for (let i = 0; i < array.length; i++) {
-        if(array[i] > 0 && Number.isInteger(array[i])) arr.push(Math.pow(array[i], 2))
+        if (array[i] > 0 && Number.isInteger(array[i])) arr.push(Math.pow(array[i], 2))
     }
 
     return arr
@@ -182,7 +183,7 @@ export function getSquarePositiveIntegers(array: Array<number>): Array<number> {
 export function sumFirstNumbers(N: number): number {
     //...здесь пишем код.
     // В return стоит "заглушка", чтоб typescript не ругался
-    let num = N*(N+1)/2
+    let num = N * (N + 1) / 2
 
     return num
 }
@@ -205,8 +206,8 @@ export function getBanknoteList(amountOfMoney: number): Array<number> {
     const banknotes = [1000, 500, 100, 50, 20, 10, 5, 2, 1]
 
     for (let i = 0; i < banknotes.length; i++) {
-        if(tempSum === 0) break
-        if(tempSum < banknotes[i]) continue
+        if (tempSum === 0) break
+        if (tempSum < banknotes[i]) continue
         else {
             arr.push(banknotes[i])
             tempSum -= banknotes[i]
@@ -219,7 +220,7 @@ export function getBanknoteList(amountOfMoney: number): Array<number> {
 
 export const secondSymbol = (s: string, symbol: string): number => {
     let firstIncl = s.indexOf(symbol)
-    if(firstIncl === -1) return -1
+    if (firstIncl === -1) return -1
     else return s.indexOf(symbol, firstIncl + 1)
 }
 
@@ -231,8 +232,8 @@ export const maxSumBetweenTwoNegatives = (a: number[]): number => {
             for (let j = i + 1; j < a.length; j++) {
                 if (a[j] > 0) {
                     newsum += a[j]
-                } else if(a[j] < 0) {
-                    if(newsum > finallySum) finallySum = newsum
+                } else if (a[j] < 0) {
+                    if (newsum > finallySum) finallySum = newsum
                     break
                 }
             }
@@ -241,3 +242,46 @@ export const maxSumBetweenTwoNegatives = (a: number[]): number => {
 
     return finallySum
 }
+
+export const solution = (words: string[]) => {
+
+    // @ts-ignore
+    function getPermutations(arr) {
+        if (arr.length === 1) {
+            return [arr];
+        } else {
+            let result = [];
+            for (let i = 0; i < arr.length; i++) {
+                let rest = arr.slice(0, i).concat(arr.slice(i+1));
+                // @ts-ignore
+                let permutations = getPermutations(rest);
+                for (let j = 0; j < permutations.length; j++) {
+                    result.push([arr[i]].concat(permutations[j]));
+                }
+            }
+            return result;
+        }
+    }
+    let newArr = getPermutations(words)
+
+   for (let i = 0; i < newArr.length; i++) {
+       let temp = 0
+        for (let j = 0; j < newArr[i].length - 1; j++) {
+
+            if (newArr[i][j][newArr[i][j].length - 1] === newArr[i][j + 1][0]) {
+                ++temp
+            }
+            else break
+        }
+
+        if (newArr[i].length - 1 === temp) return true
+    }
+    return false
+
+;
+
+}
+
+
+
+

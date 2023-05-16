@@ -4,7 +4,7 @@ import {
     isIncludes,
     isIncludesOnce, maxSumBetweenTwoNegatives,
     repeatString, rotate, secondSymbol,
-    setUpperCase, sum, sumFirstNumbers,
+    setUpperCase, solution, sum, sumFirstNumbers,
     truncateString
 } from './codeChallenge';
 
@@ -129,4 +129,14 @@ test('Max sum between two negatives', () => {
     expect(maxSumBetweenTwoNegatives([-1,6,-2,3,5,-7])).toBe(8)
     expect(maxSumBetweenTwoNegatives([5,-1,-2])).toBe(0)
     expect(maxSumBetweenTwoNegatives([1,-2])).toBe(-1)
+})
+
+test('Millipede of words, chain of words', () => {
+    expect(solution(["excavate", "endure", "desire", "screen", "theater", "excess", "night"])).toBe(true)
+    expect(solution(["trade", "pole", "view", "grave", "ladder", "mushroom", "president"])).toBe(false)
+    expect(solution(["screen", "desire", "theater", "excess", "night"])).toBe(true)
+    expect(solution(["engine", "endure", "elite", "excess"])).toBe(true)
+    expect(solution(["east", "e", "e", "t", "t", "e", "time"])).toBe(true)
+    expect(solution(["no", "dog", "on", "good"])).toBe(false)
+    expect(solution(['effort', 'example', 'transport', 'example'])).toBe(true)
 })
