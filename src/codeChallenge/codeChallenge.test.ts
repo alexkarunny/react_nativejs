@@ -1,5 +1,5 @@
 import {
-    checkStart, feast, getBanknoteList,
+    checkStart, draw, feast, getBanknoteList,
     getMinLengthWord, getSquarePositiveIntegers, getSum, getTriangleType, isEvenIndexSumGreater,
     isIncludes,
     isIncludesOnce, maxSumBetweenTwoNegatives,
@@ -139,4 +139,9 @@ test('Millipede of words, chain of words', () => {
     expect(solution(["east", "e", "e", "t", "t", "e", "time"])).toBe(true)
     expect(solution(["no", "dog", "on", "good"])).toBe(false)
     expect(solution(['effort', 'example', 'transport', 'example'])).toBe(true)
+})
+
+test('Playing Cards Draw Order', () => {
+
+    expect(draw(["KC", "KH", "QC", "KS", "KD", "QH", "QD", "QS"])).toStrictEqual(["KC", "QC", "KD", "QD", "KH", "QH", "KS", "QS"])
 })

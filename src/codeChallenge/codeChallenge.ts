@@ -282,6 +282,21 @@ export const solution = (words: string[]) => {
 
 }
 
+export const draw = (deck: string[] ): string[] => {
+    const drawnCards: string[] = [];
+    for (let i = 0; i < deck.length; i++) {
+        debugger
+        if(deck.length === 1 ) drawnCards.push(deck[0])
+        else {
+            let tempArr = deck.splice(0, 2)
+            drawnCards.push(tempArr[0])
+            deck.push(tempArr[1])
+            i = -1
+        }
+    }
+    return drawnCards;
+};
+
 
 
 
