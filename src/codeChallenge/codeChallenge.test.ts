@@ -2,7 +2,7 @@ import {
     checkStart, draw, feast, getBanknoteList,
     getMinLengthWord, getSquarePositiveIntegers, getSum, getTriangleType, isEvenIndexSumGreater,
     isIncludes,
-    isIncludesOnce, maxSumBetweenTwoNegatives,
+    isIncludesOnce, maxSumBetweenTwoNegatives, prepareDeck,
     repeatString, rotate, secondSymbol,
     setUpperCase, solution, sum, sumFirstNumbers,
     truncateString
@@ -118,30 +118,34 @@ test('get banknote list(8_07)', () => {
 })
 
 test('Find the index of the second occurrence of a letter in a string', () => {
-    expect(secondSymbol('Hello world!!!','l')).toBe(3)
-    expect(secondSymbol('Hello world!!!','o')).toBe(7)
-    expect(secondSymbol('Hello world!!!','A')).toBe(-1)
-    expect(secondSymbol('','l')).toBe(-1)
-    expect(secondSymbol('Hello','!')).toBe(-1)
+    expect(secondSymbol('Hello world!!!', 'l')).toBe(3)
+    expect(secondSymbol('Hello world!!!', 'o')).toBe(7)
+    expect(secondSymbol('Hello world!!!', 'A')).toBe(-1)
+    expect(secondSymbol('', 'l')).toBe(-1)
+    expect(secondSymbol('Hello', '!')).toBe(-1)
 })
 
 test('Max sum between two negatives', () => {
-    expect(maxSumBetweenTwoNegatives([-1,6,-2,3,5,-7])).toBe(8)
-    expect(maxSumBetweenTwoNegatives([5,-1,-2])).toBe(0)
-    expect(maxSumBetweenTwoNegatives([1,-2])).toBe(-1)
+    expect(maxSumBetweenTwoNegatives([-1, 6, -2, 3, 5, -7])).toBe(8)
+    expect(maxSumBetweenTwoNegatives([5, -1, -2])).toBe(0)
+    expect(maxSumBetweenTwoNegatives([1, -2])).toBe(-1)
 })
 
 test('Millipede of words, chain of words', () => {
-    expect(solution(["excavate", "endure", "desire", "screen", "theater", "excess", "night"])).toBe(true)
-    expect(solution(["trade", "pole", "view", "grave", "ladder", "mushroom", "president"])).toBe(false)
-    expect(solution(["screen", "desire", "theater", "excess", "night"])).toBe(true)
-    expect(solution(["engine", "endure", "elite", "excess"])).toBe(true)
-    expect(solution(["east", "e", "e", "t", "t", "e", "time"])).toBe(true)
-    expect(solution(["no", "dog", "on", "good"])).toBe(false)
+    expect(solution(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night'])).toBe(true)
+    expect(solution(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president'])).toBe(false)
+    expect(solution(['screen', 'desire', 'theater', 'excess', 'night'])).toBe(true)
+    expect(solution(['engine', 'endure', 'elite', 'excess'])).toBe(true)
+    expect(solution(['east', 'e', 'e', 't', 't', 'e', 'time'])).toBe(true)
+    expect(solution(['no', 'dog', 'on', 'good'])).toBe(false)
     expect(solution(['effort', 'example', 'transport', 'example'])).toBe(true)
 })
 
 test('Playing Cards Draw Order', () => {
 
-    expect(draw(["KC", "KH", "QC", "KS", "KD", "QH", "QD", "QS"])).toStrictEqual(["KC", "QC", "KD", "QD", "KH", "QH", "KS", "QS"])
+    expect(draw(['KC', 'KH', 'QC', 'KS', 'KD', 'QH', 'QD', 'QS'])).toStrictEqual(['KC', 'QC', 'KD', 'QD', 'KH', 'QH', 'KS', 'QS'])
+})
+
+test('Reverse Playing Cards Draw Order', () => {
+    expect(prepareDeck(['KC', 'QC', 'KD', 'QD', 'KH', 'QH', 'KS', 'QS'])).toStrictEqual(['KC', 'KH', 'QC', 'KS', 'KD', 'QH', 'QD', 'QS'])
 })

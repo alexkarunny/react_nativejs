@@ -297,6 +297,22 @@ export const draw = (deck: string[] ): string[] => {
     return drawnCards;
 };
 
+// @ts-ignore
+export const prepareDeck = (drawnCards ) => {
+
+    const deck = [];
+
+    for (let i = 0; i < drawnCards.length; i++) {
+
+        deck.unshift(drawnCards.pop())
+
+        deck.splice(1, 0, deck.pop())
+        i = -1
+    }
+
+    return deck;
+};
+
 
 
 
